@@ -16,8 +16,8 @@ fun printBothFields(player: Player, enemy: Player){
 }
 
 fun main() {
-    val player = Player(Вы)
-    val enemy = Player(Компьютер)
+    val player = Player("Вы")
+    val enemy = Player("Компьютер")
 
     player.placeShip(3,2)
     player.placeShip(3,3)
@@ -28,10 +28,16 @@ fun main() {
     enemy.placeShip(6,7)
     enemy.placeShip(7,7)
 
-    player.printField()
-    player.printStats()
-    enemy.printField(false)
     printBothFields(player, enemy)
-    printBothFields(player, enemy, true)
-    player.printField(debug = true)
+    println()
+
+    player.registerShort(true)
+    player.registerShort(false)
+    player.registerShort(true)
+
+    println("Выстрелов: ${player.shots}")
+    println("Попаданий: ${player.hits}")
+
+    player.reset()
+    println(player.status())
 }
